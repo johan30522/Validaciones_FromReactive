@@ -1,0 +1,70 @@
+<h2>Template:<small>Dinamicos</small></h2>
+
+
+<form autocomplete="off" [formGroup]="miForm">
+    <div class="mb-3 row">
+        <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" placeholder="Nombre de la persona" required id="nombre" formControlName="nombre">
+            <span *ngIf="campoEsValido('nombre')" class="form-text text-danger"> Debe completar el nombre.</span>
+        </div>
+    </div>
+
+    <div class="mb-3 row">
+        <label for="nombre" class="col-sm-2 col-form-label">Agregar</label>
+        <div class="col-sm-10">
+
+
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Agregar Juego Favorito" name="nuevoFavorito" [formControl]="nuevoFavorito" (keyup.enter)="agregarFavorito()">
+                <button class="btn btn-outline-primary" type="button" id="button-addon2" (click)="agregarFavorito()">Agregar</button>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="mb-3 row">
+        <label for="nombre" class="col-sm-2 col-form-label">Lista de Favoritos</label>
+        <div class="col-sm-10" formArrayName="favoritos">
+
+
+            <div class="input-group mb-1" *ngFor="let favorito of favoritosArreglo.controls; let i=index" type="text">
+                <input class="form-control" [formControlName]="i">
+                <button class="btn btn-outline-danger" type="button" id="button-addon2" (click)="eliminarFavorito(i)">Eliminar</button>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <button type="button" class="btn btn-primary float-end" (click)="guardar()">Guardar</button>
+
+        </div>
+    </div>
+</form>
+
+
+<div class="row">
+    <div class="col">
+        <!-- <pre>{{miForm.value|json}}</pre>
+
+        <pre>{{persona|json}}</pre>
+-->
+        <span>valid</span>
+        <pre>{{miForm.valid}}</pre>
+        <span>pristine</span>
+        <pre>{{miForm.pristine}}</pre>
+        <span>touched</span>
+        <pre>{{miForm.touched}}</pre>
+
+        <pre>{{miForm.value|json}}</pre>
+
+        <pre>{{nuevoFavorito.value|json}}</pre>
+
+
+
+
+    </div>
+</div>

@@ -1,0 +1,88 @@
+<h2>Template:<small>Switches</small></h2>
+
+
+<form #miForm="ngForm" autocomplete="off">
+    <div class="mb-3 row">
+        <label for="nombre" class="col-sm-3 col-form-label">Genero</label>
+        <div class="col-sm-9">
+
+
+            <!--Radios-->
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="radioGenero" id="radioMasculino" value="M" [(ngModel)]="persona.genero" required>
+                <label class="form-check-label" for="radioMasculino">
+                  Masculino
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="radioGenero" id="radioFemenino" value="F" [(ngModel)]="persona.genero" required>
+                <label class="form-check-label" for="radioFemenino">
+                  Femenino
+                </label>
+            </div>
+
+        </div>
+    </div>
+    <!--Switches-->
+
+
+    <div class="mb-3 row">
+        <label for="nombre" class="col-sm-3 col-form-label">Notificaciones</label>
+        <div class="col-sm-9">
+
+
+            <div class="form-check form-switch mt-2">
+                <input class="form-check-input" type="checkbox" id="switchNotificaciones" checked [(ngModel)]="persona.notificaciones" name="notificaciones">
+                <label class="form-check-label" for="switchNotificaciones">Quiero recibir notificaciones</label>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!--Check-->
+
+    <div class="mb-3 row">
+        <label for="nombre" class="col-sm-3 col-form-label">Terminos y Condiciones</label>
+        <div class="col-sm-9">
+
+
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="checkTerminos" [(ngModel)]="terminos" name="terminos" required>
+                <label class="form-check-label" for="checkTerminos">
+                  Aceptar Termino y Condiciones de Uso
+                </label>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <button type="button" class="btn btn-primary float-end" [disabled]="miForm.invalid">Guardar</button>
+
+        </div>
+    </div>
+</form>
+
+
+
+<h5>valor del formulario</h5>
+<pre>
+    {{miForm.value|json}}
+</pre>
+
+<h5>valido</h5>
+<pre>
+    {{miForm.valid}}
+</pre>
+
+<h5>valido</h5>
+<pre>
+    {{miForm.valid}}
+</pre>
+
+<h5>terminos</h5>
+<pre>
+    {{miForm.controls?.terminos?.errors|json}}
+</pre>
